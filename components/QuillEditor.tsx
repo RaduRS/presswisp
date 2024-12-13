@@ -1,16 +1,16 @@
 "use client";
-import React, { useState, useMemo } from "react";
+
+import React, { useMemo } from "react";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
+import { QuillEditorProps } from "@/types/types";
 
 const ReactQuill = dynamic(() => import("react-quill"), {
   ssr: false,
   loading: () => <p>Loading editor...</p>,
 });
 
-const QuillEditor = () => {
-  const [value, setValue] = useState("");
-
+const QuillEditor = ({ value, setArticleBody }: QuillEditorProps) => {
   const modules = useMemo(
     () => ({
       toolbar: [
@@ -47,7 +47,7 @@ const QuillEditor = () => {
         <ReactQuill
           theme="snow"
           value={value}
-          onChange={setValue}
+          onChange={setArticleBody}
           modules={modules}
           formats={formats}
           className="quill-editor h-auto p-4"

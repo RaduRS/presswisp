@@ -5,7 +5,7 @@ export default clerkMiddleware(async (auth, req) => {
   const urlPath = req.nextUrl.pathname;
   const { userId } = await auth();
 
-  if (urlPath === "/editor" && !userId) {
+  if (urlPath.startsWith("/editor") && !userId) {
     return NextResponse.redirect(new URL("/", req.url));
   }
 

@@ -1,10 +1,5 @@
 import Article from "@/lib/database/models/article";
-
-type ArticleInput = {
-  input: {
-    body: string;
-  };
-};
+import { ArticleInput } from "@/types/types";
 
 const resolvers = {
   Query: {
