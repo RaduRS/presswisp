@@ -25,3 +25,15 @@ body {
     text-wrap: balance;
   }
 }
+
+@layer utilities {
+  .quill-editor .ql-container {
+    @apply min-h-[30vh] box-border overflow-auto;
+  }
+  .quill-editor .ql-editor {
+    @apply min-h-[30vh] max-h-[80vh]; /* Set editor height to 90% of the viewport height */
+  }
+  .quill-editor .ql-toolbar {
+    @apply sticky top-0 z-10 bg-white shadow;
+  }
+}
