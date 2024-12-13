@@ -7,20 +7,28 @@ if (!MONGODB_URI) {
     "Please define the MONGODB_URI environment variable inside .env.local"
   );
 }
+
+let isConnected = 0; // Tracks the connection state
+
 const connectToDatabase = async () => {
+  if (isConnected) {
+    console.log("📂 Using existing database connection");
+    return;
+  }
+
   if (mongoose.connection.readyState === 1) {
-    // Already connected
+    isConnected = 1;
+    console.log("📂 Using existing database connection");
     return;
   }
 
   try {
-    await mongoose.connect(MONGODB_URI).then((mongoose) => {
-      console.log(" 🎉 Database connection successful");
-      return mongoose;
-    });
-    console.log("Connected to MongoDB");
+    const db = await mongoose.connect(MONGODB_URI);
+    isConnected = 1;
+    console.log("🎉 Connected to MongoDB");
+    return db;
   } catch (error) {
-    console.error("Error connecting to MongoDB:", error);
+    console.error("❌ Error connecting to MongoDB:", (error as Error).message);
     throw new Error("Could not connect to MongoDB");
   }
 };

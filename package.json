@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.12.3",
+    "@apollo/server": "^4.11.2",
+    "@as-integrations/next": "^3.2.0",
     "@clerk/nextjs": "^6.9.1",
     "mongoose": "^8.8.4",
     "next": "14.2.20",

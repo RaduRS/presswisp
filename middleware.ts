@@ -3,15 +3,12 @@ import { NextResponse } from "next/server";
 
 export default clerkMiddleware(async (auth, req) => {
   const urlPath = req.nextUrl.pathname;
-
   const { userId } = await auth();
 
-  // Redirect unauthenticated users accessing `/editor` to `/`
   if (urlPath === "/editor" && !userId) {
     return NextResponse.redirect(new URL("/", req.url));
   }
 
-  // Allow all other routes to proceed normally
   return NextResponse.next();
 });
 
