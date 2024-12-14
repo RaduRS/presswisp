@@ -4,6 +4,8 @@ export const CREATE_ARTICLE = gql`
   mutation CreateArticle($input: CreateArticleInput!) {
     createArticle(input: $input) {
       id
+      title
+      description
       body
       date
     }

@@ -1,11 +1,9 @@
 "use client";
 
 import React from "react";
-import DOMPurify from "dompurify";
 import { useQuery } from "@apollo/client";
 import { Article } from "@/types/types";
 import { GET_ARTICLES } from "@/app/api/graphql/queries";
-
 
 const ArticlesTable = () => {
   const { data, loading, error } = useQuery(GET_ARTICLES);
@@ -29,22 +27,6 @@ const ArticlesTable = () => {
         </thead>
         <tbody>
           {articles.map((article: Article) => {
-            const cleanHTML = DOMPurify.sanitize(article.body, {
-              ALLOWED_TAGS: [
-                "p",
-                "b",
-                "i",
-                "em",
-                "strong",
-                "ul",
-                "li",
-                "ol",
-                "a",
-                "img",
-              ],
-              ALLOWED_ATTR: ["href", "src", "alt", "title", "style"],
-            });
-
             return (
               <tr key={article.id}>
                 <td className="border border-gray-300 px-4 py-2">
@@ -52,7 +34,7 @@ const ArticlesTable = () => {
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
                   {/* Render sanitized HTML */}
-                  <div dangerouslySetInnerHTML={{ __html: cleanHTML }} />
+                  <div dangerouslySetInnerHTML={{ __html: article.body }} />
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
                   {new Date(article.date).toLocaleString()}

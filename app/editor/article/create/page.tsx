@@ -6,20 +6,23 @@ import { CREATE_ARTICLE } from "@/app/api/graphql/mutations";
 import QuillEditor from "@/components/QuillEditor";
 
 const CreateArticle = () => {
-  const [articleBody, setArticleBody] = useState(""); // State to hold editor content
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [articleBody, setArticleBody] = useState("");
   const [createArticle, { loading, error }] = useMutation(CREATE_ARTICLE);
 
   const handleSubmit = async () => {
     try {
-      const { data } = await createArticle({
+      await createArticle({
         variables: {
           input: {
-            body: articleBody, // Pass the editor content
+            title,
+            description,
+            body: articleBody,
           },
         },
       });
-      console.log("Article created:", data.createArticle);
-      alert("Article successfully created!");
+      await fetch("/api/revalidate?path=/", { method: "POST" });
     } catch (err) {
       console.error("Error creating article:", err);
       alert("Failed to create article.");
@@ -29,7 +32,20 @@ const CreateArticle = () => {
   return (
     <div className="p-8">
       <h2 className="text-2xl font-bold mb-4">Create a New Article</h2>
-
+      <input
+        type="text"
+        placeholder="Title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        className="w-full mb-4 p-2 border border-gray-300 rounded"
+      />
+      <textarea
+        placeholder="Description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        className="w-full mb-4 p-2 border border-gray-300 rounded"
+        rows={4}
+      />
       {/* Editor Component */}
       <QuillEditor value={articleBody} setArticleBody={setArticleBody} />
 

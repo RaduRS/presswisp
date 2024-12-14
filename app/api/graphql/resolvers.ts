@@ -19,10 +19,11 @@ const resolvers = {
   },
 
   Mutation: {
-    // Create a new article
     createArticle: async (_: unknown, { input }: ArticleInput) => {
       try {
         const newArticle = new Article({
+          title: input.title,
+          description: input.description,
           body: input.body,
         });
         const savedArticle = await newArticle.save();

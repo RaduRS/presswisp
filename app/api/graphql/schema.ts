@@ -3,12 +3,16 @@ import { gql } from "graphql-tag";
 export const typeDefs = gql`
   type Article {
     id: ID!
+    title: String!
+    description: String!
     body: String!
     date: String!
   }
 
   # Input for creating a new article
   input CreateArticleInput {
+    title: String!
+    description: String!
     body: String!
   }
 
