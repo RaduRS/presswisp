@@ -16,6 +16,22 @@ const resolvers = {
         );
       }
     },
+
+    getArticle: async (_: unknown, { path }: { path: string }) => {
+      try {
+        const article = await Article.findOne({ path });
+        if (!article) {
+          throw new Error("Article not found");
+        }
+        return article;
+      } catch (error: unknown) {
+        throw new Error(
+          `Error fetching article: ${
+            error instanceof Error ? error.message : "Unknown error"
+          }`
+        );
+      }
+    },
   },
 
   Mutation: {
@@ -24,6 +40,7 @@ const resolvers = {
         const newArticle = new Article({
           title: input.title,
           description: input.description,
+          path: input.path,
           body: input.body,
         });
         const savedArticle = await newArticle.save();

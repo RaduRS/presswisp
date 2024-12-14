@@ -5,6 +5,7 @@ export const typeDefs = gql`
     id: ID!
     title: String!
     description: String!
+    path: String!
     body: String!
     date: String!
   }
@@ -13,12 +14,14 @@ export const typeDefs = gql`
   input CreateArticleInput {
     title: String!
     description: String!
+    path: String!
     body: String!
   }
 
   # Query for fetching articles
   type Query {
     getArticles: [Article!]! # Returns a list of all articles
+    getArticle(path: String!): Article
   }
 
   # Mutation for creating an article

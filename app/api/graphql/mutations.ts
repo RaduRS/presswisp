@@ -6,6 +6,7 @@ export const CREATE_ARTICLE = gql`
       id
       title
       description
+      path
       body
       date
     }

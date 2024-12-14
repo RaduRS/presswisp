@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_ARTICLE } from "@/app/api/graphql/mutations";
 import QuillEditor from "@/components/QuillEditor";
+import { generatePath } from "@/helpers/TimeHelper";
 
 const CreateArticle = () => {
   const [title, setTitle] = useState("");
@@ -13,11 +14,14 @@ const CreateArticle = () => {
 
   const handleSubmit = async () => {
     try {
+      const path = generatePath(title);
+      console.log("Generated path:", path);
       await createArticle({
         variables: {
           input: {
             title,
             description,
+            path,
             body: articleBody,
           },
         },

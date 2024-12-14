@@ -6,6 +6,20 @@ export const GET_ARTICLES = gql`
       id
       title
       description
+      path
+      body
+      date
+    }
+  }
+`;
+
+export const GET_ARTICLE = gql`
+  query GetArticle($path: String!) {
+    getArticle(path: $path) {
+      id
+      title
+      description
+      path
       body
       date
     }

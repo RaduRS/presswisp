@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const ArticleSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
+  path: { type: String, required: true },
   body: { type: String, required: true },
   date: { type: Date, default: Date.now, index: true },
 });

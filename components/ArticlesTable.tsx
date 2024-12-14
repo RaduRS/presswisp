@@ -2,8 +2,14 @@
 
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { Article } from "@/types/types";
+
 import { GET_ARTICLES } from "@/app/api/graphql/queries";
+
+export type Article = {
+  id: string;
+  body: string;
+  date: string;
+};
 
 const ArticlesTable = () => {
   const { data, loading, error } = useQuery(GET_ARTICLES);
