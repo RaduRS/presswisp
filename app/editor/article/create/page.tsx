@@ -15,7 +15,7 @@ const CreateArticle = () => {
 
   const handleSubmit = async () => {
     try {
-      const path = generatePath(title);
+      const path = generatePath(metaTitle);
       console.log("Generated path:", path);
       await createArticle({
         variables: {

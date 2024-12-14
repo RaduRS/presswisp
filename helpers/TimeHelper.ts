@@ -11,8 +11,8 @@ export const getRelativeTime = (date: string | number): string => {
   return `about ${diffInHours} hour${diffInHours === 1 ? "" : "s"} ago`;
 };
 
-export const generatePath = (title: string): string => {
-  const cleanedTitle = title
+export const generatePath = (metaTitle: string): string => {
+  const cleanedPath = metaTitle
     .toLowerCase()
     .replace(/[^a-z0-9\s-]/g, "")
     .replace(/\s+/g, "-")
@@ -28,5 +28,5 @@ export const generatePath = (title: string): string => {
 
   const timestamp = `${year}${month}${day}${hour}${minute}`;
 
-  return `${cleanedTitle}-${timestamp}`;
+  return `${cleanedPath}-${timestamp}`;
 };
