@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
-export const CREATE_ARTICLE = gql`
-  mutation CreateArticle($input: CreateArticleInput!) {
-    createArticle(input: $input) {
+export const UPSERT_ARTICLE = gql`
+  mutation UpsertArticle($input: ArticleInput!) {
+    upsertArticle(input: $input) {
       id
       title
       metaTitle

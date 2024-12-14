@@ -41,7 +41,6 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-
 export default async function Home() {
   const { data } = await client.query({
     query: GET_ARTICLES,

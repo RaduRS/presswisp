@@ -6,8 +6,6 @@ export async function POST(request: Request) {
     const url = new URL(request.url);
     const path = url.searchParams.get("path") || "/";
 
-    console.log("Revalidating path:", path);
-
     // Trigger revalidation for the specified path
     revalidatePath(path);
 

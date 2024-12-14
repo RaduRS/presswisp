@@ -35,17 +35,36 @@ const resolvers = {
   },
 
   Mutation: {
-    createArticle: async (_: unknown, { input }: ArticleInput) => {
+    upsertArticle: async (_: unknown, { input }: ArticleInput) => {
       try {
-        const newArticle = new Article({
-          title: input.title,
-          metaTitle: input.metaTitle,
-          description: input.description,
-          path: input.path,
-          body: input.body,
-        });
-        const savedArticle = await newArticle.save();
-        return savedArticle;
+        if (input.id) {
+          // Update existing article
+          const updatedArticle = await Article.findByIdAndUpdate(
+            input.id,
+            {
+              title: input.title,
+              metaTitle: input.metaTitle,
+              description: input.description,
+              path: input.path,
+              body: input.body,
+            },
+            { new: true }
+          );
+          if (!updatedArticle) throw new Error("Article not found for update");
+          return updatedArticle;
+        } else {
+          // Create new article
+          const newArticle = new Article({
+            title: input.title,
+            metaTitle: input.metaTitle,
+            description: input.description,
+            path: input.path,
+            body: input.body,
+            date: new Date(),
+          });
+          const savedArticle = await newArticle.save();
+          return savedArticle;
+        }
       } catch (error: unknown) {
         throw new Error(
           `Error creating article: ${

@@ -6,6 +6,7 @@ export type QuillEditorProps = {
 //resolvers
 export type ArticleInput = {
   input: {
+    id: string;
     title: string;
     metaTitle: string;
     description: string;

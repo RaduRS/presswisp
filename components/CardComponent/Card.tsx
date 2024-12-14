@@ -4,6 +4,7 @@ import { getRelativeTime } from "@/helpers/TimeHelper";
 import { CardProps } from "@/types/types";
 import { useRouter } from "next/navigation";
 import React from "react";
+import EditButton from "../EditButton";
 
 const Card = ({ title, imageSrc, date, path }: CardProps) => {
   const router = useRouter();
@@ -19,10 +20,11 @@ const Card = ({ title, imageSrc, date, path }: CardProps) => {
       onClick={openArticle}
     >
       <div className="image mb-4">
-        <img src={imageSrc} alt="Article image" className="w-full rounded" />
+        <img src={imageSrc} alt="Article image" className="rounded" />
       </div>
       <div className="body mb-4"> {title}</div>
       <div className="time text-gray-500 text-sm">{relativeTime}</div>
+      <EditButton path={path} />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import client from "@/lib/apolloClient";
 import { Metadata } from "next";
 import { GET_ARTICLE } from "../api/graphql/queries";
-
+export const revalidate = 0;
 export async function generateMetadata({
   params,
 }: {
@@ -10,6 +10,7 @@ export async function generateMetadata({
   const { data } = await client.query({
     query: GET_ARTICLE,
     variables: { path: params.path },
+    fetchPolicy: "network-only",
   });
 
   const article = data?.getArticle;

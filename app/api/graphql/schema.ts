@@ -11,8 +11,9 @@ export const typeDefs = gql`
     date: String!
   }
 
-  # Input for creating a new article
-  input CreateArticleInput {
+  # Input for creating or updating an article
+  input ArticleInput {
+    id: ID
     title: String!
     metaTitle: String!
     description: String!
@@ -28,6 +29,6 @@ export const typeDefs = gql`
 
   # Mutation for creating an article
   type Mutation {
-    createArticle(input: CreateArticleInput!): Article! # Creates a new article
+    upsertArticle(input: ArticleInput!): Article! # Creates a new article
   }
 `;
