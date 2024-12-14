@@ -5,6 +5,7 @@ export const CREATE_ARTICLE = gql`
     createArticle(input: $input) {
       id
       title
+      metaTitle
       description
       path
       body

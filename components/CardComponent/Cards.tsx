@@ -11,7 +11,7 @@ const Cards = ({ articles }: CardsProps) => {
       <Head>
         {articles.map((article) => (
           <React.Fragment key={article.id}>
-            <meta property="og:title" content={article.title} />
+            <meta property="og:title" content={article.metaTitle} />
             <meta property="og:description" content={article.description} />
             <meta
               property="og:url"
@@ -28,6 +28,7 @@ const Cards = ({ articles }: CardsProps) => {
             id={article.id}
             imageSrc="https://via.placeholder.com/150"
             title={article.title}
+            metaTitle={article.metaTitle}
             description={article.description}
             path={article.path}
             body={article.body}

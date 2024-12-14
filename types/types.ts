@@ -7,6 +7,7 @@ export type QuillEditorProps = {
 export type ArticleInput = {
   input: {
     title: string;
+    metaTitle: string;
     description: string;
     path: string;
     body: string;
@@ -16,6 +17,7 @@ export type ArticleInput = {
 export type ArticleBase = {
   id: string;
   title: string;
+  metaTitle: string;
   description: string;
   path: string;
   body: string;

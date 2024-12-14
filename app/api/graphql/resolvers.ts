@@ -39,6 +39,7 @@ const resolvers = {
       try {
         const newArticle = new Article({
           title: input.title,
+          metaTitle: input.metaTitle,
           description: input.description,
           path: input.path,
           body: input.body,

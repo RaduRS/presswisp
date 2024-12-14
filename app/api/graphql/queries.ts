@@ -5,6 +5,7 @@ export const GET_ARTICLES = gql`
     getArticles {
       id
       title
+      metaTitle
       description
       path
       body
@@ -18,6 +19,7 @@ export const GET_ARTICLE = gql`
     getArticle(path: $path) {
       id
       title
+      metaTitle
       description
       path
       body

@@ -13,19 +13,19 @@ export async function generateMetadata(): Promise<Metadata> {
   const articles = data?.getArticles || [];
 
   const topArticle = articles[0];
-  const articleTitles = articles
-    .map((article: ArticleBase) => article.title)
+  const articleMetaTitles = articles
+    .map((article: ArticleBase) => article.metaTitle)
     .slice(0, 5);
 
   return {
     title: "PressWisp - Latest News",
-    description: `Explore the latest news and insights on PressWisp. Stay informed with curated articles on trending topics from trusted sources like: ${articleTitles.join(
+    description: `Explore the latest news and insights on PressWisp. Stay informed with curated articles on trending topics from trusted sources like: ${articleMetaTitles.join(
       ", "
     )}.`,
     openGraph: {
       title: "PressWisp - Latest News",
       description: topArticle
-        ? `PressWisp delivers top news and insights. Check out our featured article: "${topArticle.title}".`
+        ? `PressWisp delivers top news and insights. Check out our featured article: "${topArticle.metaTitle}".`
         : "PressWisp delivers top news and insights, curated to keep you informed and ahead of the curve.",
       type: "website",
       url: "https://presswisp.com/",
@@ -34,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: topArticle?.imageSrc || "https://presswisp.com/default-og.png",
           width: 1200,
           height: 630,
-          alt: topArticle?.title || "PressWisp Homepage",
+          alt: topArticle?.metaTitle || "PressWisp Homepage",
         },
       ],
     },

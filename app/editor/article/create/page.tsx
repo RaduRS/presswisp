@@ -8,6 +8,7 @@ import { generatePath } from "@/helpers/TimeHelper";
 
 const CreateArticle = () => {
   const [title, setTitle] = useState("");
+  const [metaTitle, setMetaTitle] = useState("");
   const [description, setDescription] = useState("");
   const [articleBody, setArticleBody] = useState("");
   const [createArticle, { loading, error }] = useMutation(CREATE_ARTICLE);
@@ -20,6 +21,7 @@ const CreateArticle = () => {
         variables: {
           input: {
             title,
+            metaTitle,
             description,
             path,
             body: articleBody,
@@ -43,6 +45,15 @@ const CreateArticle = () => {
         onChange={(e) => setTitle(e.target.value)}
         className="w-full mb-4 p-2 border border-gray-300 rounded"
       />
+      <input
+        type="text"
+        placeholder="Meta Title"
+        value={metaTitle}
+        onChange={(e) => setMetaTitle(e.target.value)}
+        className="w-full mb-4 p
+      border border-gray-300 rounded"
+      />
+
       <textarea
         placeholder="Description"
         value={description}

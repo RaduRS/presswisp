@@ -1,5 +1,4 @@
 import client from "@/lib/apolloClient";
-
 import { Metadata } from "next";
 import { GET_ARTICLE } from "../api/graphql/queries";
 
@@ -23,7 +22,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: article.title,
+    title: article.metaTitle,
     description: article.description,
   };
 }

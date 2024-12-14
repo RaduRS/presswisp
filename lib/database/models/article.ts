@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const ArticleSchema = new mongoose.Schema({
   title: { type: String, required: true },
+  metaTitle: { type: String, required: true },
   description: { type: String, required: true },
   path: { type: String, required: true },
   body: { type: String, required: true },

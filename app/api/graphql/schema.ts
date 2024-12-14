@@ -4,6 +4,7 @@ export const typeDefs = gql`
   type Article {
     id: ID!
     title: String!
+    metaTitle: String!
     description: String!
     path: String!
     body: String!
@@ -13,6 +14,7 @@ export const typeDefs = gql`
   # Input for creating a new article
   input CreateArticleInput {
     title: String!
+    metaTitle: String!
     description: String!
     path: String!
     body: String!
