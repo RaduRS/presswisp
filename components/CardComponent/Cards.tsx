@@ -30,6 +30,7 @@ const Cards = ({ articles }: CardsProps) => {
             title={article.title}
             metaTitle={article.metaTitle}
             description={article.description}
+            headline={article.headline}
             path={article.path}
             body={article.body}
             date={article.date}

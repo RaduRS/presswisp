@@ -46,6 +46,7 @@ const resolvers = {
               metaTitle: input.metaTitle,
               description: input.description,
               path: input.path,
+              headline: input.headline,
               body: input.body,
             },
             { new: true }
@@ -59,6 +60,7 @@ const resolvers = {
             metaTitle: input.metaTitle,
             description: input.description,
             path: input.path,
+            headline: input.headline,
             body: input.body,
             date: new Date(),
           });

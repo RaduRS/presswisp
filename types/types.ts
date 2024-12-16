@@ -11,6 +11,7 @@ export type ArticleInput = {
     metaTitle: string;
     description: string;
     path: string;
+    headline: boolean;
     body: string;
   };
 };
@@ -21,6 +22,7 @@ export type ArticleBase = {
   metaTitle: string;
   description: string;
   path: string;
+  headline: boolean;
   body: string;
   date: string;
 };

@@ -8,6 +8,7 @@ export const GET_ARTICLES = gql`
       metaTitle
       description
       path
+      headline
       body
       date
     }
@@ -22,6 +23,7 @@ export const GET_ARTICLE = gql`
       metaTitle
       description
       path
+      headline
       body
       date
     }

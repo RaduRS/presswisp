@@ -8,6 +8,7 @@ const CreateArticle = () => {
   const [title, setTitle] = useState("");
   const [metaTitle, setMetaTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [headline, setHeadline] = useState(false);
   const [articleBody, setArticleBody] = useState("");
   const [upsertArticle, { loading }] = useMutation(UPSERT_ARTICLE);
 
@@ -15,7 +16,14 @@ const CreateArticle = () => {
     const path = generatePath(metaTitle);
     await upsertArticle({
       variables: {
-        input: { path, title, metaTitle, description, body: articleBody },
+        input: {
+          path,
+          title,
+          metaTitle,
+          description,
+          headline,
+          body: articleBody,
+        },
       },
     });
     await fetch("/api/revalidate?path=/", { method: "POST" });
@@ -29,6 +37,8 @@ const CreateArticle = () => {
       setMetaTitle={setMetaTitle}
       description={description}
       setDescription={setDescription}
+      headline={headline}
+      setHeadline={setHeadline}
       articleBody={articleBody}
       setArticleBody={setArticleBody}
       onSubmit={handleSubmit}

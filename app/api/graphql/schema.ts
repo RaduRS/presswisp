@@ -7,6 +7,7 @@ export const typeDefs = gql`
     metaTitle: String!
     description: String!
     path: String!
+    headline: Boolean!
     body: String!
     date: String!
   }
@@ -18,6 +19,7 @@ export const typeDefs = gql`
     metaTitle: String!
     description: String!
     path: String!
+    headline: Boolean!
     body: String!
   }
 

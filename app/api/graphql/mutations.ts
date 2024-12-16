@@ -8,6 +8,7 @@ export const UPSERT_ARTICLE = gql`
       metaTitle
       description
       path
+      headline
       body
       date
     }

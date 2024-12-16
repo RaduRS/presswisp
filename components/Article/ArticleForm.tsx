@@ -8,6 +8,8 @@ interface ArticleFormProps {
   setMetaTitle: (value: string) => void;
   description: string;
   setDescription: (value: string) => void;
+  headline: boolean;
+  setHeadline: (value: boolean) => void;
   articleBody: string;
   setArticleBody: (value: string) => void;
   onSubmit: () => void;
@@ -25,6 +27,8 @@ const ArticleForm = ({
   setArticleBody,
   onSubmit,
   isSubmitting,
+  headline,
+  setHeadline,
 }: ArticleFormProps) => {
   return (
     <div>
@@ -34,6 +38,12 @@ const ArticleForm = ({
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         className="w-full mb-4 p-2 border border-gray-300 rounded"
+      />
+      <input
+        type="checkbox"
+        checked={headline}
+        onChange={(e) => setHeadline(e.target.checked)}
+        className="mr-2"
       />
       <input
         type="text"

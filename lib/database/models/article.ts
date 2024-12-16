@@ -5,6 +5,7 @@ const ArticleSchema = new mongoose.Schema({
   metaTitle: { type: String, required: true },
   description: { type: String, required: true },
   path: { type: String, required: true },
+  headline: { type: Boolean, default: false },
   body: { type: String, required: true },
   date: { type: Date, default: Date.now, index: true },
 });
