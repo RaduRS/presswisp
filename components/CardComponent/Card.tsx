@@ -20,7 +20,7 @@ const Card = ({ title, body, date, path }: ArticleBase) => {
 
   return (
     <div
-      className="card border border-gray-300 rounded-md shadow-md p-4"
+      className="card border border-gray-300 rounded-md shadow-md p-4 prose"
       onClick={openArticle}
     >
       {imageSrc ? (

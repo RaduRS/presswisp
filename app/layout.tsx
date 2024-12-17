@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Manrope, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import ClientProviders from "@/context/ClientProviders";
+import { cn } from "@/lib/utils";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-manrope",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+export const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-playfairDisplay",
 });
 
 export const metadata: Metadata = {
@@ -47,7 +49,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cn(
+          "font-sans antialiased",
+          manrope.variable,
+          playfairDisplay.variable
+        )}
       >
         <ClientProviders>{children}</ClientProviders>
       </body>

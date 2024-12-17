@@ -1,3 +1,19 @@
+const numberToWords = (num: number): string => {
+  const words = [
+    "a",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+  ];
+  return num <= 10 ? words[num - 1] : num.toString();
+};
+
 export const getRelativeTime = (date: string | number): string => {
   const now = new Date();
   const then = new Date(typeof date === "string" ? parseInt(date) : date); // Parse if string
@@ -8,7 +24,14 @@ export const getRelativeTime = (date: string | number): string => {
   }
 
   const diffInHours = Math.round(diffInMinutes / 60);
-  return `about ${diffInHours} hour${diffInHours === 1 ? "" : "s"} ago`;
+  if (diffInHours < 24) {
+    return `about ${numberToWords(diffInHours)} hour${
+      diffInHours === 1 ? "" : "s"
+    } ago`;
+  }
+
+  const diffInDays = Math.round(diffInHours / 24);
+  return `${numberToWords(diffInDays)} day${diffInDays === 1 ? "" : "s"} ago`;
 };
 
 export const generatePath = (metaTitle: string): string => {
