@@ -29,3 +29,16 @@ export const GET_ARTICLE = gql`
     }
   }
 `;
+
+export const GET_HEADLINE_ARTICLE = gql`
+  query GetHeadlineArticle {
+    getHeadlineArticle {
+      id
+      title
+      description
+      date
+      path
+      body
+    }
+  }
+`;

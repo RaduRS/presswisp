@@ -30,7 +30,3 @@ export type ArticleBase = {
 export type CardsProps = {
   articles: ArticleBase[];
 };
-
-export type CardProps = ArticleBase & {
-  imageSrc: string;
-};

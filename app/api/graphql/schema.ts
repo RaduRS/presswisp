@@ -27,6 +27,7 @@ export const typeDefs = gql`
   type Query {
     getArticles: [Article!]! # Returns a list of all articles
     getArticle(path: String!): Article
+    getHeadlineArticle: Article
   }
 
   # Mutation for creating an article

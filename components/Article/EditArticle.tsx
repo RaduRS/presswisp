@@ -50,6 +50,7 @@ const EditArticle = ({ path }: { path: string }) => {
             title,
             metaTitle,
             description,
+            headline,
             body: articleBody,
           },
         },

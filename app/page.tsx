@@ -1,8 +1,9 @@
 import Cards from "@/components/CardComponent/Cards";
 import client from "@/lib/apolloClient";
-import { GET_ARTICLES } from "./api/graphql/queries";
+import { GET_ARTICLES, GET_HEADLINE_ARTICLE } from "./api/graphql/queries";
 import { Metadata } from "next";
 import { ArticleBase } from "@/types/types";
+import Headline from "@/components/Headline";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { data } = await client.query({
@@ -15,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const topArticle = articles[0];
   const articleMetaTitles = articles
     .map((article: ArticleBase) => article.metaTitle)
-    .slice(0, 5);
+    .slice(0, 3);
 
   return {
     title: "PressWisp - Latest News",
@@ -42,6 +43,13 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
+  const { data: headlineData } = await client.query({
+    query: GET_HEADLINE_ARTICLE,
+    fetchPolicy: "network-only",
+  });
+
+  const headlineArticle = headlineData?.getHeadlineArticle;
+
   const { data } = await client.query({
     query: GET_ARTICLES,
     fetchPolicy: "network-only",
@@ -52,7 +60,17 @@ export default async function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <h1 className="text-3xl font-bold">Welcome to the Articles Portal</h1>
-      <Cards articles={articles} />
+      <section>
+        {headlineArticle && (
+          <Headline
+            title={headlineArticle.title}
+            description={headlineArticle.description}
+            body={headlineArticle.body}
+            path={headlineArticle.path}
+          />
+        )}
+        <Cards articles={articles} />
+      </section>
       <footer className="text-gray-500">© 2024 Your Website</footer>
     </div>
   );

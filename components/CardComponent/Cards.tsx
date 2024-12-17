@@ -26,7 +26,6 @@ const Cards = ({ articles }: CardsProps) => {
           <Card
             key={article.id}
             id={article.id}
-            imageSrc="https://via.placeholder.com/150"
             title={article.title}
             metaTitle={article.metaTitle}
             description={article.description}

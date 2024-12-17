@@ -32,6 +32,18 @@ const resolvers = {
         );
       }
     },
+    getHeadlineArticle: async () => {
+      try {
+        const article = await Article.findOne({ headline: true })
+          .sort({ date: -1 })
+          .exec();
+
+        return article || null;
+      } catch (error) {
+        console.error("Error fetching headline article:", error);
+        throw new Error("Failed to fetch the headline article.");
+      }
+    },
   },
 
   Mutation: {

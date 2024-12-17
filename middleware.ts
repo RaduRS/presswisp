@@ -5,7 +5,10 @@ export default clerkMiddleware(async (auth, req) => {
   const urlPath = req.nextUrl.pathname;
   const { userId } = await auth();
 
-  if (urlPath.startsWith("/editor") && !userId) {
+  if (
+    (urlPath.startsWith("/editor") && !userId) ||
+    (urlPath.startsWith("/api/upload-image") && !userId)
+  ) {
     return NextResponse.redirect(new URL("/", req.url));
   }
 

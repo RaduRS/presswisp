@@ -7,7 +7,9 @@ const client = new ApolloClient({
       Query: {
         fields: {
           getArticles: {
-            merge: false, // Do not merge; always use incoming data
+            merge(existing = [], incoming) {
+              return [...incoming]; // Replace with incoming data (equivalent to `merge: false`)
+            },
           },
         },
       },

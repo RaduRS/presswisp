@@ -37,3 +37,8 @@ body {
     @apply sticky top-0 z-10 bg-white shadow;
   }
 }
+
+.quill-editor .ql-editor img {
+  width: 50%;
+  max-width: 300px !important;
+}
