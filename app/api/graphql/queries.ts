@@ -9,6 +9,7 @@ export const GET_ARTICLES = gql`
       description
       path
       headline
+      readingTime
       body
       date
     }
@@ -24,6 +25,7 @@ export const GET_ARTICLE = gql`
       description
       path
       headline
+      readingTime
       body
       date
     }
@@ -36,6 +38,7 @@ export const GET_HEADLINE_ARTICLE = gql`
       id
       title
       description
+      readingTime
       date
       path
       body

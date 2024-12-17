@@ -58,13 +58,14 @@ export default async function Home() {
   const articles = data?.getArticles.slice(0, 10) || [];
 
   return (
-    <div className="flex flex-col items-center w-full max-w-[1200px] mx-auto p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="flex flex-col items-center w-full max-w-[1200px] mx-auto px-8 gap-16 sm:py-20 font-[family-name:var(--font-geist-sans)]">
       <h1 className="text-3xl font-bold">Welcome to the Press Wisp</h1>
       <section className="w-full max-w-[1024px] gap-16 flex flex-col">
         {headlineArticle && (
           <Headline
             title={headlineArticle.title}
             description={headlineArticle.description}
+            readingTime={headlineArticle.readingTime}
             body={headlineArticle.body}
             path={headlineArticle.path}
             date={headlineArticle.date}

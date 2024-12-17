@@ -59,6 +59,7 @@ const resolvers = {
               description: input.description,
               path: input.path,
               headline: input.headline,
+              readingTime: input.readingTime,
               body: input.body,
             },
             { new: true }
@@ -74,6 +75,7 @@ const resolvers = {
             path: input.path,
             headline: input.headline,
             body: input.body,
+            readingTime: input.readingTime,
             date: new Date(),
           });
           const savedArticle = await newArticle.save();

@@ -31,6 +31,7 @@ const Cards = ({ articles }: CardsProps) => {
             description={article.description}
             headline={article.headline}
             path={article.path}
+            readingTime={article.readingTime}
             body={article.body}
             date={article.date}
           />

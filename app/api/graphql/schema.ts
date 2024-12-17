@@ -8,6 +8,7 @@ export const typeDefs = gql`
     description: String!
     path: String!
     headline: Boolean!
+    readingTime: Int!
     body: String!
     date: String!
   }
@@ -20,6 +21,7 @@ export const typeDefs = gql`
     description: String!
     path: String!
     headline: Boolean!
+    readingTime: Int!
     body: String!
   }
 

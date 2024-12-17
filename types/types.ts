@@ -12,6 +12,7 @@ export type ArticleInput = {
     description: string;
     path: string;
     headline: boolean;
+    readingTime: number;
     body: string;
   };
 };
@@ -23,6 +24,7 @@ export type ArticleBase = {
   description: string;
   path: string;
   headline: boolean;
+  readingTime: number;
   body: string;
   date: string;
 };

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import QuillEditor from "@/components/QuillEditor";
+import { calculateReadingTime } from "@/helpers/generalHelpers";
 
 interface ArticleFormProps {
   title: string;
@@ -12,7 +13,7 @@ interface ArticleFormProps {
   setHeadline: (value: boolean) => void;
   articleBody: string;
   setArticleBody: (value: string) => void;
-  onSubmit: () => void;
+  onSubmit: (readingTime: number) => void;
   isSubmitting: boolean;
 }
 
@@ -30,6 +31,17 @@ const ArticleForm = ({
   headline,
   setHeadline,
 }: ArticleFormProps) => {
+  const [readingTime, setReadingTime] = useState(0);
+
+  useEffect(() => {
+    const time = calculateReadingTime(articleBody);
+    setReadingTime(time);
+  }, [articleBody]);
+
+  const handleSubmit = () => {
+    onSubmit(readingTime); // Pass readingTime to parent
+  };
+
   return (
     <div>
       <input
@@ -60,9 +72,10 @@ const ArticleForm = ({
         rows={4}
       />
       <QuillEditor value={articleBody} setArticleBody={setArticleBody} />
+      <p>Estimated Reading Time: {readingTime} minutes</p>
       <button
         className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-        onClick={onSubmit}
+        onClick={handleSubmit}
         disabled={isSubmitting || !articleBody.trim()}
       >
         {isSubmitting ? "Submitting..." : "Submit"}

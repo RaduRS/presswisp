@@ -39,7 +39,7 @@ const EditArticle = ({ path }: { path: string }) => {
     }
   }, [data]);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (readingTime: number) => {
     const newPath = generatePath(metaTitle);
     try {
       await upsertArticle({
@@ -51,6 +51,7 @@ const EditArticle = ({ path }: { path: string }) => {
             metaTitle,
             description,
             headline,
+            readingTime,
             body: articleBody,
           },
         },

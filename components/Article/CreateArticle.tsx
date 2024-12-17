@@ -12,7 +12,7 @@ const CreateArticle = () => {
   const [articleBody, setArticleBody] = useState("");
   const [upsertArticle, { loading }] = useMutation(UPSERT_ARTICLE);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (readingTime: number) => {
     const path = generatePath(metaTitle);
     await upsertArticle({
       variables: {
@@ -22,6 +22,7 @@ const CreateArticle = () => {
           metaTitle,
           description,
           headline,
+          readingTime,
           body: articleBody,
         },
       },

@@ -6,6 +6,7 @@ const ArticleSchema = new mongoose.Schema({
   description: { type: String, required: true },
   path: { type: String, required: true },
   headline: { type: Boolean, default: false },
+  readingTime: { type: Number, required: true },
   body: { type: String, required: true },
   date: { type: Date, default: Date.now, index: true },
 });

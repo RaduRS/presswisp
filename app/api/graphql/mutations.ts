@@ -9,6 +9,7 @@ export const UPSERT_ARTICLE = gql`
       description
       path
       headline
+      readingTime
       body
       date
     }

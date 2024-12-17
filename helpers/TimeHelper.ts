@@ -1,6 +1,6 @@
 const numberToWords = (num: number): string => {
   const words = [
-    "a",
+    "one",
     "two",
     "three",
     "four",
