@@ -7,6 +7,7 @@ const client = new ApolloClient({
       Query: {
         fields: {
           getArticles: {
+            // eslint-disable-next-line
             merge(existing = [], incoming) {
               return [...incoming]; // Replace with incoming data (equivalent to `merge: false`)
             },
