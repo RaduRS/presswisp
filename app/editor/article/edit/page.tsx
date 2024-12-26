@@ -1,16 +1,16 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import EditArticle from "@/components/Article/EditArticle";
 
-const EditArticlePage = () => {
+const EditArticleContent = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const path = searchParams.get("path");
 
   if (!path) {
-    router.push("/editor"); // Redirect to the editor dashboard if no path is provided
+    router.push("/editor");
     return null;
   }
 
@@ -19,6 +19,14 @@ const EditArticlePage = () => {
       <h2 className="text-2xl font-bold mb-4">Edit Article</h2>
       <EditArticle path={path} />
     </div>
+  );
+};
+
+const EditArticlePage = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <EditArticleContent />
+    </Suspense>
   );
 };
 
