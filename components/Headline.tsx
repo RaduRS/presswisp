@@ -40,6 +40,7 @@ const Headline = ({
       {imageSrc && (
         <>
           <aside className="min-w-[50%] w-full md:w-1/2 h-[300px] relative md:mr-6 flex items-end">
+            <div className="absolute inset-0 bg-black opacity-40 z-10 rounded-lg md:hidden"></div>
             <article className="block md:hidden z-10 p-4">
               <h2 className="font-bold text-h2 m-0 leading-tight line-clamp-3 text-gray-50">
                 {title}
@@ -50,7 +51,7 @@ const Headline = ({
               src={imageSrc}
               alt={title}
               fill
-              className="rounded-lg"
+              className="rounded-lg z-0"
               priority
               style={{
                 objectFit: "cover",
@@ -58,10 +59,10 @@ const Headline = ({
             />
           </aside>
           <article className="block md:hidden">
-            <p className="text-body text-gray-600 leading-relaxed line-clamp-3 m-0 mt-4">
+            <p className="text-body text-gray-600 leading-relaxed line-clamp-3 m-0 mt-4 text-balance">
               {description}
             </p>
-            <div className="m-0 flex justify-between items-center">
+            <div className="m-0 flex justify-between items-center text-sm">
               <span className="text-red-500 font-semibold">Movies</span>
               <div className="flex items-center">
                 <Clock3 size={16} className="text-gray-600 mr-2" />
@@ -71,7 +72,7 @@ const Headline = ({
           </article>
         </>
       )}
-      <article className="flex-col w-full md:w-1/2 justify-between prose hidden md:flex">
+      <article className="flex-col w-full md:w-1/2 justify-between prose hidden md:flex text-balance">
         <span className="time text-gray-500 text-sm hidden md:block">
           {relativeTime}
         </span>
@@ -82,7 +83,7 @@ const Headline = ({
         <p className="text-body text-gray-600 leading-relaxed line-clamp-3 m-0">
           {description}
         </p>
-        <div className="m-0 flex justify-between items-center">
+        <div className="m-0 flex justify-between items-center text-sm">
           <span className="text-red-500 font-semibold">Movies</span>
           <div className="flex items-center">
             <Clock3 size={16} className="text-gray-600 mr-2" />

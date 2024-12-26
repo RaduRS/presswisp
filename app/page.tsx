@@ -5,6 +5,8 @@ import { Metadata } from "next";
 import { ArticleBase } from "@/types/types";
 import Headline from "@/components/Headline";
 
+export const dynamic = "force-static";
+export const revalidate = false;
 export async function generateMetadata(): Promise<Metadata> {
   const { data } = await client.query({
     query: GET_ARTICLES,
