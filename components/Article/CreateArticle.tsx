@@ -29,10 +29,10 @@ const CreateArticle = () => {
     });
     await fetch("/api/revalidate?path=/", { method: "POST" });
 
-    const deployHookUrl = process.env.NEXT_PUBLIC_VERCEL_DEPLOY_HOOK;
-    if (deployHookUrl) {
-      await fetch(deployHookUrl, { method: "POST" });
-    }
+    // const deployHookUrl = process.env.NEXT_PUBLIC_VERCEL_DEPLOY_HOOK;
+    // if (deployHookUrl) {
+    //   await fetch(deployHookUrl, { method: "POST" });
+    // }
   };
 
   return (
