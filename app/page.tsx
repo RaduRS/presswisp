@@ -1,9 +1,9 @@
-// import Cards from "@/components/CardComponent/Cards";
-// import client from "@/lib/apolloClient";
-// import { GET_ARTICLES, GET_HEADLINE_ARTICLE } from "./api/graphql/queries";
+import Cards from "@/components/CardComponent/Cards";
+import client from "@/lib/apolloClient";
+import { GET_ARTICLES, GET_HEADLINE_ARTICLE } from "./api/graphql/queries";
 // import { Metadata } from "next";
 // import { ArticleBase } from "@/types/types";
-// import Headline from "@/components/Headline";
+import Headline from "@/components/Headline";
 
 export const dynamic = "force-static";
 export const revalidate = false;
@@ -45,25 +45,25 @@ export const revalidate = false;
 // }
 
 export default async function Home() {
-  // const { data: headlineData } = await client.query({
-  //   query: GET_HEADLINE_ARTICLE,
-  //   fetchPolicy: "network-only",
-  // });
+  const { data: headlineData } = await client.query({
+    query: GET_HEADLINE_ARTICLE,
+    fetchPolicy: "network-only",
+  });
 
-  // const headlineArticle = headlineData?.getHeadlineArticle;
+  const headlineArticle = headlineData?.getHeadlineArticle;
 
-  // const { data } = await client.query({
-  //   query: GET_ARTICLES,
-  //   fetchPolicy: "network-only",
-  // });
+  const { data } = await client.query({
+    query: GET_ARTICLES,
+    fetchPolicy: "network-only",
+  });
 
-  // const articles = data?.getArticles.slice(0, 10) || [];
+  const articles = data?.getArticles.slice(0, 10) || [];
 
   return (
     <div className="flex flex-col items-center w-full max-w-[1200px] mx-auto px-8 gap-16 sm:py-20 font-[family-name:var(--font-geist-sans)]">
       <h1 className="text-3xl font-bold">Welcome to the Press Wisp</h1>
       <section className="w-full max-w-[1024px] gap-16 flex flex-col">
-        {/* {headlineArticle && (
+        {headlineArticle && (
           <Headline
             title={headlineArticle.title}
             description={headlineArticle.description}
@@ -73,7 +73,7 @@ export default async function Home() {
             date={headlineArticle.date}
           />
         )}
-        <Cards articles={articles} /> */}
+        <Cards articles={articles} />
       </section>
       <footer className="text-gray-500">© 2024 Your Website</footer>
     </div>
