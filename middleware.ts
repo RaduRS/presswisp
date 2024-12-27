@@ -18,7 +18,7 @@ export default clerkMiddleware(async (auth, req) => {
 export const config = {
   matcher: [
     "/editor",
-    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
-    "/(api|trpc)(.*)",
+    "/api/upload-image", // Keep this for specific API routes needing auth
+    "/((?!_next|api/graphql|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
   ],
 };
