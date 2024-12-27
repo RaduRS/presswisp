@@ -1,13 +1,10 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 
-const getBaseUrl = () => {
-  if (typeof window !== "undefined") return ""; // browser should use relative url
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`; // SSR should use vercel url
-  return `http://localhost:3000`; // dev SSR should use localhost
-};
-
 const client = new ApolloClient({
-  uri: `${getBaseUrl()}/api/graphql`,
+  uri:
+    process.env.NODE_ENV === "production"
+      ? "https://presswisp-git-main-radurs-projects-d4653025.vercel.app/api/graphql"
+      : "http://localhost:3000/api/graphql",
   cache: new InMemoryCache({
     typePolicies: {
       Query: {
