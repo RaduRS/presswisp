@@ -45,19 +45,19 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  const { data: headlineData } = await client.query({
-    query: GET_HEADLINE_ARTICLE,
-    fetchPolicy: "network-only",
-  });
+  // const { data: headlineData } = await client.query({
+  //   query: GET_HEADLINE_ARTICLE,
+  //   fetchPolicy: "network-only",
+  // });
 
-  const headlineArticle = headlineData?.getHeadlineArticle;
+  // const headlineArticle = headlineData?.getHeadlineArticle;
 
-  const { data } = await client.query({
-    query: GET_ARTICLES,
-    fetchPolicy: "network-only",
-  });
+  // const { data } = await client.query({
+  //   query: GET_ARTICLES,
+  //   fetchPolicy: "network-only",
+  // });
 
-  const articles = data?.getArticles.slice(0, 10) || [];
+  // const articles = data?.getArticles.slice(0, 10) || [];
 
   return (
     <div className="flex flex-col items-center w-full max-w-[1200px] mx-auto px-8 gap-16 sm:py-20 font-[family-name:var(--font-geist-sans)]">
